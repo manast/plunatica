@@ -1,0 +1,10 @@
+
+<div id="blogbar">
+    <ul>
+    {% for blog in blogs %}
+        <li><a href="{{blog.id}}">{{ blog.title }}</a>, published: {{ blog.pub_date|date:"D d M Y"}}, {{ blog.author }} </li>
+    {% empty %}
+        <p>No blogs are available.</p>
+    {% endfor %}
+    </ul>
+</div>

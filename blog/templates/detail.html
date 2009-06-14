@@ -1,0 +1,17 @@
+{% load markup %}
+
+<h2>{{ blog.title}}</h2>
+
+<p class="post-info">Posted by {{ blog.author }} | {{ tags }}  |</p>
+
+{% filter restructuredtext %}
+    {{ blog.content }}
+{% endfilter %}
+
+<p class="postmeta">		
+	<a href="index.html" class="readmore">Read more</a> |
+    <a href="index.html" class="comments">Comments (7)</a> |				
+    <span class="date">{{ blog.pub_date }}</span>	
+</p>
+
+
