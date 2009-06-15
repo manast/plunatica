@@ -18,6 +18,7 @@ class Blog(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey('Author')
+    slug = models.SlugField(max_length=64)
     tags = models.ManyToManyField ('Tag')
     
     def __unicode__(self):

@@ -1,10 +1,19 @@
+{% load markup %}
 
-<div id="blogbar">
-    <ul>
     {% for blog in blogs %}
-        <li><a href="{{blog.id}}">{{ blog.title }}</a>, published: {{ blog.pub_date|date:"D d M Y"}}, {{ blog.author }} </li>
+        <p class="post-info">Posted by {{ blog.author }} | {{ blog.tags }}  |</p>
+        
+        {% filter restructuredtext %}
+            {{ blog.content|truncatewords_html:50 }}
+        {% endfilter %}
+        
+        <p class="postmeta">	
+        <!-- use slugify for better urls -->	
+	       <a href="{{blog.slug}}" class="readmore">Read more</a> |
+           <a href="{{blog.id}}#comments" class="comments">Comments (7)</a> |				
+            <span class="date">{{ blog.pub_date|date:"D d M Y" }}</span>	
+        </p>
+    
     {% empty %}
         <p>No blogs are available.</p>
     {% endfor %}
-    </ul>
-</div>
