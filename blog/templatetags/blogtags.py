@@ -21,9 +21,10 @@ def blogindex( maxNumBlogs ):
 def blogdetail( slug_name ):
     try:
         if slug_name == None:
-            b = Blog.objects.all().order_by('-pub_data')[:1]
+            b = Blog.objects.all().order_by('-pub_date')[0]
         else:
-            b = Blog.objects.filter(slug=slug_name).order_by('-pub_data')[:1]
+            b = Blog.objects.filter(slug=slug_name).order_by('-pub_date')[0]
     except Blog.DoesNotExist:
         raise Http404
+
     return {'blog': b }
