@@ -15,10 +15,10 @@ class Author(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=64)
     content = models.TextField()
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey('Author')
-    slug = models.SlugField(max_length=64)
     tags = models.ManyToManyField ('Tag')
     
     def __unicode__(self):

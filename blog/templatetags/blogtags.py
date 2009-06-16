@@ -18,15 +18,12 @@ def blogindex( maxNumBlogs ):
 
 # A blog entry
 @register.inclusion_tag('detail.html')
-def blogdetail( blogId ):
+def blogdetail( slug_name ):
     try:
-        b = Blog.objects.get(pk=blogId)
-        tags = b.tags.filter()
-        tag_string = ""
-        for t in tags:
-            tag_string += str(t) + ", "
-        tag_string = tag_string[:-2]
-            
+        if slug_name == None:
+            b = Blog.objects.all().order_by('-pub_data')[:1]
+        else:
+            b = Blog.objects.filter(slug=slug_name).order_by('-pub_data')[:1]
     except Blog.DoesNotExist:
         raise Http404
-    return {'blog': b, 'tags': tag_string}
+    return {'blog': b }
