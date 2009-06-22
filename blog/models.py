@@ -30,22 +30,21 @@ class Blog(models.Model):
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey('Author')
     tags = models.ManyToManyField ('Tag')
+    published = models.BooleanField (default=False)
     
     def __unicode__(self):
         return self.title
+            
+    @models.permalink
+    def get_absolute_url(self):
+        return ('main.views.blog_detail', (), {'blog_slug': self.slug })
 
-class Tag(models.Model):
-    name = models.CharField(max_length=32)
-    
-    def __unicode__(self):
-        return self.name
-                    
 class Comment(models.Model):
     author = models.ForeignKey('Author')
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
 
-    
+
 
 
 
