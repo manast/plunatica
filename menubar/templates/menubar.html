@@ -1,0 +1,9 @@
+<ul id="navlist">
+ {% for item in menu %}  
+  {% ifequal item.name selected %}
+   <li id="current"><a href="{{ item.view }}">{{ item.name }}</a></li>
+  {% else %}
+   <li><a href="{{ item.view }}">{{ item.name }}</a></li>
+  {% endifequal %}
+ {% endfor %}
+</ul>
