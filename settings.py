@@ -75,6 +75,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.markup',
+    'django.contrib.comments',
     'plunatica.main',
-    'plunatica.blog'
+    'plunatica.blog',
+    'plunatica.menubar',
+    'plunatica.links'
 )
