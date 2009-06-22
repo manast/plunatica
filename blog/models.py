@@ -12,6 +12,16 @@ class Author(models.Model):
     def __unicode__(self):
         return self.name + " " + self.surname + ", " + self.email
     
+class Tag(models.Model):
+    name = models.CharField(max_length=32)
+    
+    def __unicode__(self):
+        return self.name
+        
+    @models.permalink
+    def get_absolute_url(self):
+        return ('main.views.blog_index_by_tag', (), {'tag':self.name} )
+# Here we couple the blog app to plunatica. How could we remove this coupling?
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
