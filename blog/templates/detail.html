@@ -13,5 +13,75 @@
 
 <!-- Comments start here -->
 
+{% get_comment_count for blog as comment_count %}
 
+<h3 id="comments">{{ comment_count }} Responses</h3>
+
+    <ol class="commentlist">
+
+{% get_comment_list for blog as comment_list %}
+
+{% for comment in comment_list %}
+    <li class="alt" id="comment-63">
+				
+	   <cite>
+	       <img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />			
+		   <a href="{{ comment.user_url }}"> {{ comment.user_name }} </a> Says: <br />				
+		   <span class="comment-data"><a href="#comment-63" title="">{{ comment.submit_date }}</a> </span>
+		</cite>
+							
+		<div class="comment-text">
+		  <p> {{ comment.comment }}</p>
+		</div>				
+	</li>
+
+{% endfor %}
+ 			<h3 id="respond">Leave a Reply</h3>				
+			
+			{% get_comment_form for blog as comment_form %}
+			
+			<form action="{% comment_form_target %}" method="post" id="commentform">		
+
+			{% for field in comment_form %}
+                {% if field.is_hidden %}
+                    {{ field }}
+                {% else %}
+                    <p
+                    {% if field.errors %} class="error"{% endif %}
+                    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                    {% if field.errors %}{{ field.errors }}{% endif %}
+                    </p>
+                {% endif %}
+            {% endfor %}
+								
+				<p>	
+					<label for="id_name">Name (required)</label><br />
+					<input id="id_name" name="name" value="Your Name" type="text" tabindex="1" maxlength="50" />
+				</p>
+			
+				<p>
+					<label for="id_email">Email Address (required)</label><br />
+					<input id="id_email" name="email" value="Your Email" type="text" tabindex="2" />
+				</p>
+				
+				<p>
+					<label for="id_url">Website</label><br />
+					<input id="id_url" name="url" value="Your Website" type="text" tabindex="3" />
+				</p>
+					
+				<p>
+					<label for="id_comment">Your Message</label><br />
+					<textarea id="id_comment" name="comment" rows="10" cols="80" tabindex="4"></textarea>
+				</p>
+				
+				<input type="hidden" name="next" value="{% url blog-detail blog.slug %}" />
+			   
+				<p class="no-border">
+					<input class="button" type="submit" value="Submit" tabindex="5" />         		
+				</p>
+					
+			</form>
+{% else %}
+		<p> Blog not found... </p>			
+{% endif %}
 
