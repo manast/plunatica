@@ -1,12 +1,11 @@
 {% load markup %}
+{% load comments %}
+
+{% if blog %}
 
 <h2>{{ blog.title }}</h2>
 
-<p class="post-info">Posted by {{ blog.author }} | 
-{% for tag in blog.tags.all %} 
-    {{ tag.name }}{% if not forloop.last %},
-    {% endif %}    
-{% endfor %} |</p>
+{% include "postinfo.html" %}
 
 {% filter restructuredtext %}
     {{ blog.content }}
