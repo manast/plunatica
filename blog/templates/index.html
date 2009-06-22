@@ -1,16 +1,20 @@
 {% load markup %}
+{% load comments %}
 
     {% for blog in blogs %}
-        <p class="post-info">Posted by {{ blog.author }} | {{ blog.tags }}  |</p>
+        <h3>{{ blog.title }}</h3>
+        
+        {% include "postinfo.html" %}
         
         {% filter restructuredtext %}
             {{ blog.content|truncatewords_html:50 }}
         {% endfilter %}
         
-        <p class="postmeta">	
-        <!-- use slugify for better urls -->	
-	       <a href="{{blog.slug}}" class="readmore">Read more</a> |
-           <a href="{{blog.id}}#comments" class="comments">Comments (7)</a> |				
+        <p class="postmeta">
+	       <a href="{% url blog-detail blog.slug %}" class="readmore">Read more</a> |
+           
+           {% get_comment_count for blog as comment_count %}
+           <a href="{{blog.id}}#comments" class="comments">Comments ({{ comment_count }})</a> |				
             <span class="date">{{ blog.pub_date|date:"D d M Y" }}</span>	
         </p>
     
