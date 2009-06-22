@@ -2,7 +2,7 @@
 <div id="blogbar">
     <ul>
     {% for blog in blogs %}
-        <li><a href="{% url blog-detail blog.slug %}">{{ blog.title }}</a>, published: {{ blog.pub_date|date:"D d M Y"}}, {{ blog.author }} </li>
+        <li><a href="{% url blog-detail blog.slug %}">{{ blog.title }}</a>, {{ blog.pub_date|date:"D d M Y"}}, by {{ blog.author.name }} </li>
     {% empty %}
         <p>No blogs are available.</p>
     {% endfor %}
