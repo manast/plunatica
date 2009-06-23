@@ -1,4 +1,4 @@
-
+from django.contrib.syndication.feeds import Feed
 from django.db import models
 
 # Create your models here.
@@ -44,7 +44,12 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
 
+class LatestEntries(Feed):
+    title = "Plunatica"
+    link = "/latest/"
+    description = "Just another software development blog."
 
-
+    def items(self):
+        return Blog.objects.order_by('-pub_date')[:5]
 
 
