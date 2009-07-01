@@ -7,8 +7,8 @@ admin.autodiscover()
 
 feeds = {'latest': LatestEntries}
 
-
 urlpatterns = patterns('',
+    url(r'^admin/blog/blog/(?P<object_id>[0-9]+)/preview/$','plunatica.blog.views.preview'),
     (r'^admin/', include(admin.site.urls)),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^', include ('plunatica.main.urls')),
