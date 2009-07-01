@@ -3,5 +3,7 @@
 {% load blogtags %}
 
 {% block blog %}
-    {% blogdetail blog_slug %}
+ {% block main %}
+  {% blogdetail blog_slug %}
+ {% endblock %}
 {% endblock %}
