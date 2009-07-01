@@ -1,6 +1,10 @@
 from django.contrib.syndication.feeds import Feed
 from django.db import models
 
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
+from rstify.utils import rstify
+
 # Create your models here.
 
 class Author(models.Model):
@@ -27,6 +31,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=64)
     content = models.TextField()
+    content_html = models.TextField(blank=True)
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey('Author')
     tags = models.ManyToManyField ('Tag')
@@ -34,6 +39,10 @@ class Blog(models.Model):
     
     def __unicode__(self):
         return self.title
+        
+    def save(self, **kwargs):
+        self.content_html = mark_safe(rstify(self.content, 1))
+        super(Blog, self).save(**kwargs)
             
     @models.permalink
     def get_absolute_url(self):
