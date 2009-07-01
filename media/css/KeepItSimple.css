@@ -11,7 +11,7 @@
    HTML ELEMENTS
 ------------------------------------------------- */ 
 body {
-	font: 11px/165% 'Lucida Grande', Verdana, Helvetica, sans-serif;
+	font: 12px/165% 'Lucida Grande', Verdana, Helvetica, sans-serif;
 	color: #666666; 	
 	margin: 0; padding: 0 0 50px 0; 
 	background: #F6F5F5 url(../images/bg.gif) repeat-x; 
@@ -186,7 +186,7 @@ input.button {
 	margin: 0 auto;	
 	background: #fff url(../images/content-bg.gif) repeat-y center top;	
 	padding-bottom: 35px;
-	padding-top: 5px;		
+	padding-top: 5px;
 	overflow: auto;
 }
 #header-wrap {
