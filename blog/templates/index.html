@@ -1,23 +1,24 @@
-{% load markup %}
 {% load comments %}
+{% load markup %}
+{% load rstify_tags %}
 
-    {% for blog in blogs %}
-        <h3>{{ blog.title }}</h3>
+{% for blog in blogs %}
+ <h2>{{ blog.title }}</h2>
         
-        {% include "postinfo.html" %}
+ {% include "postinfo.html" %}
+       
+ {% autoescape off %} 
+ {{ blog.content_html|truncatewords_html:50 }}
+ {% endautoescape %}
         
-        {% filter restructuredtext %}
-            {{ blog.content|truncatewords_html:50 }}
-        {% endfilter %}
-        
-        <p class="postmeta">
-	       <a href="{% url blog-detail blog.slug %}" class="readmore">Read more</a> |
+ <p class="postmeta">
+ <a href="{% url blog-detail blog.slug %}" class="readmore">Read more</a> |
            
-           {% get_comment_count for blog as comment_count %}
-           <a href="{{blog.id}}#comments" class="comments">Comments ({{ comment_count }})</a> |				
-            <span class="date">{{ blog.pub_date|date:"D d M Y" }}</span>	
-        </p>
+ {% get_comment_count for blog as comment_count %}
+ <a href="{% url blog-detail blog.slug %}#comments" class="comments">Comments ({{ comment_count }})</a> |				
+ <span class="date">{{ blog.pub_date|date:"D d M Y" }}</span>	
+ </p>
     
-    {% empty %}
-        <p>No blogs are available.</p>
-    {% endfor %}
+ {% empty %}
+    <p>No blogs are available.</p>
+ {% endfor %}
