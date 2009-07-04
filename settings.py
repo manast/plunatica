@@ -1,10 +1,14 @@
-# Django settings for plunatica project.
+# Django settings for Code Tonic project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+#SITE_BASE_URL = 'www.codetonic.com'
+SITE_BASE_URL = '127.0.0.1:8000'
+
+
 ADMINS = (
-   ('Manuel Astudillo', 'manuel@plunatica.com'),
+   ('Manuel Astudillo', 'manuel@codetonic.com'),
 )
 
 MANAGERS = ADMINS
@@ -64,9 +68,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'plunatica.urls'
+ROOT_URLCONF = 'codetonic.urls'
 
-TEMPLATE_DIRS = ("/Users/manuel/Django-projects/templates")
+TEMPLATE_DIRS = ("templates")
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -77,8 +81,9 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.comments',
     'rstify',
-    'plunatica.main',
-    'plunatica.blog',
-    'plunatica.menubar',
-    'plunatica.links'
+    'codetonic.main',
+    'codetonic.blog',
+    'codetonic.menubar',
+    'codetonic.links'
 )
+

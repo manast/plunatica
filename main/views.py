@@ -5,7 +5,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse, NoReverseMatch
 
-from plunatica.menubar.models import MenuItem
+from codetonic.menubar.models import MenuItem
 
 main_menu = [ MenuItem('Home','/'), 
               MenuItem('Blog','/blog'),
@@ -13,7 +13,7 @@ main_menu = [ MenuItem('Home','/'),
 
 def home ( request ):
     menu = ( main_menu, 'Home')
-    return render_to_response('plunatica.html', {'maxblogs': '10', 'menu':menu, 'blog_slug':None} )
+    return render_to_response('codetonic.html', {'maxblogs': '10', 'menu':menu, 'blog_slug':None} )
     
 def blog_index ( request ):
     menu = ( main_menu, 'Blog')
@@ -29,5 +29,5 @@ def blog_index_by_tag ( request, tag ):
     
 def blog_detail ( request, blog_slug  ):
     menu = ( main_menu, 'Blog')
-    return render_to_response('plunatica.html', {'blog_slug': blog_slug,'menu':menu} )
+    return render_to_response('codetonic.html', {'blog_slug': blog_slug,'menu':menu} )
     
