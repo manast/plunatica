@@ -25,9 +25,9 @@ class Tag(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('main.views.blog_index_by_tag', (), {'tag':self.name} )
-# Here we couple the blog app to plunatica. How could we remove this coupling?
+# Here we couple the blog app to codetonic. How could we remove this coupling?
 
-class Blog(models.Model):
+class BlogEntry(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=64)
     content = models.TextField()
@@ -42,7 +42,7 @@ class Blog(models.Model):
         
     def save(self, **kwargs):
         self.content_html = mark_safe(rstify(self.content, 1))
-        super(Blog, self).save(**kwargs)
+        super(BlogEntry, self).save(**kwargs)
             
     @models.permalink
     def get_absolute_url(self):
@@ -54,11 +54,11 @@ class Comment(models.Model):
     content = models.TextField()
 
 class LatestEntries(Feed):
-    title = "Plunatica"
+    title = "Code Tonic"
     link = "/latest/"
-    description = "Just another software development blog."
+    description = "A Fresh Code Tonic."
 
     def items(self):
-        return Blog.objects.order_by('-pub_date')[:5]
+        return BlogEntry.objects.order_by('-pub_date')[:5]
 
 

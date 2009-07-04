@@ -1,5 +1,5 @@
 from django import template
-from plunatica.blog.models import Blog, Tag
+from blog.models import BlogEntry, Tag
 from django.http import Http404
 
 register = template.Library()
@@ -7,16 +7,16 @@ register = template.Library()
 # A blog bar
 @register.inclusion_tag('bar.html')
 def blogbar( maxNumBlogs ):
-    blogs = Blog.objects.filter(published=True).order_by('-pub_date')[:maxNumBlogs]
+    blogs = BlogEntry.objects.filter(published=True).order_by('-pub_date')[:maxNumBlogs]
     return {'blogs': blogs}
     
 # A blog index 
 @register.inclusion_tag('index.html')
 def blogindex( maxNumBlogs, tag ):
     if tag == None:
-        blogs = Blog.objects.filter(published=True).order_by('-pub_date')[:maxNumBlogs]
+        blogs = BlogEntry.objects.filter(published=True).order_by('-pub_date')[:maxNumBlogs]
     else:
-        blogs = Blog.objects.filter(published=True, tags__name__contains=tag).order_by('-pub_date')[:maxNumBlogs]
+        blogs = BlogEntry.objects.filter(published=True, tags__name__contains=tag).order_by('-pub_date')[:maxNumBlogs]
         
     return {'blogs': blogs}
 
@@ -25,17 +25,17 @@ def blogindex( maxNumBlogs, tag ):
 def blogdetail( slug_name ):
     try:
         if slug_name == None:
-            b = Blog.objects.filter(published=True)
+            b = BlogEntry.objects.filter(published=True)
             if len(b) > 0:
                 b = b.order_by('-pub_date')[0]
         else:
-            blogs = Blog.objects.filter(slug=slug_name, published=True)
+            blogs = BlogEntry.objects.filter(slug=slug_name, published=True)
             if len(blogs) > 0:
                 b = blogs.order_by('-pub_date')[0]
             else:
                 b = None
            
-    except Blog.DoesNotExist:
+    except BlogEntry.DoesNotExist:
         raise Http404
         
     return {'blog': b }
