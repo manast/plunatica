@@ -1,0 +1,9 @@
+<div id="tags">
+    <ul>
+    {% for tag in tags %}
+        <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
+    {% empty %}
+        <p>No tags available.</p>
+    {% endfor %}
+    </ul>
+</div>

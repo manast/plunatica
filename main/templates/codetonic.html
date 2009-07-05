@@ -1,0 +1,150 @@
+{% load menubar %}
+{% load blogtags %}
+{% load linktag %}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    <link rel="alternate" type="application/rss+xml" title="Codetonic.com RSS Feed" href="/feeds/latest" />
+
+    <link rel="stylesheet" href="{{ site.domain }}/media/css/screen.css" />
+    <link rel="stylesheet" href="{{ site.domain }}/media/css/native.css" />
+    
+    <style type="text/css" media="all">
+        div.spacer 
+        {  
+            background-color: #8FC73E;  
+            height: 1em;  
+        }
+        div.codeblock
+        {
+            background-color: #606060;
+            margin-left: 15px;
+            -webkit-border-radius: 5px;
+        }
+        div.highlight
+        {
+            font: 14px/150% 'Courier';
+            background-color: #606060;
+            margin-left: 15px;
+            margin-top: 15px;
+            -webkit-border-radius: 5px;
+        }
+        div.sidemenu
+        {
+            font: 11px/165% 'Lucida Grande';
+        }
+        .feed 
+        {
+            margin-left: 3px;
+            padding: 0 0 0 19px;
+            background: url("{{ site.domain }}/media/images/feed-icon-14x14.png") no-repeat 0 50%;
+        }
+    </style>
+    
+    <title>{% block title %}Code Tonic{% endblock %}</title>
+</head>
+
+<body>
+  <!-- header container -->
+  <div id="header-wrap">
+    <div id="header" class="container_16">		
+					
+		<h1 id="logo-text"><a href="/" title="">Code Tonic</a></h1>		
+		<p id="intro">{% block logo_bar %}A fresh look to software development{% endblock %}</p>		
+		
+		<!-- navigation -->
+		{% block navigation %}
+		<div  id="nav">
+			{% show_menubar menu %}
+		</div>
+	    {% endblock %}
+		
+		<div id="header-image"></div> 
+	<!--	
+		<form id="quick-search" action="index.html" method="get" >
+			<p>
+			<label for="qsearch">Search:</label>
+			<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+			<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="http://localhost:8000/site_media/images/search.gif" />
+			</p>
+		</form>
+		--></div>
+    </div>
+  </div>
+  <!-- header ends here -->
+	  
+  <div id="content-outer">
+    <div class="container_16" id="content-wrapper">
+        <div class="grid_12" id="main">
+          {% block blog %}
+           {% blogdetail blog_slug %}
+          {% endblock %}
+        </div>
+      
+        <div id="left-columns" class="grid_4">
+          {% block sidebar %}
+			<div class="sidemenu">		
+		      <h3>Recent Posts</h3>
+			     {% blogbar 5 %}
+		    </div>
+		    <div class="sidemenu">		
+		      <h3>Links</h3>
+		      {% linklist 'links' %}
+		    </div>
+		    <div class="sidemenu">		
+		      <h3>Essentials</h3>
+		      {% linklist 'essentials' %}
+		    </div>  
+	        <div class="sidemenu">		
+		      <h3>Tags</h3>
+		      {% taglist 0 %}
+		    </div>
+		    <div class="sidemenu">
+		      <h3>Follow Me!</h3>
+		      <div class="social_links">
+	           <ul>
+		       <li>
+		         <img style="margin: 0 10px -2px 0;" src="{{ site.domain }}/media/images/Facebook.png"/><a href="http://www.facebook.com/profile.php?id=1821910093&hiq=manuel%2Castudillo" target="blank">Facebook</a>
+		       </li>
+		       <li>
+		         <img style="margin: 0 10px -2px 0;" src="{{ site.domain }}/media/images/Twitter.png"/><a href="http://www.twitter.com/manast" target="blank">Twitter</a>
+		         </li>
+		         <li>
+		         <img style="margin: 0 10px -2px 0;" src="{{ site.domain }}/media/images/LinkedIn.png"/><a href="http://www.linkedin.com/profile?viewProfile=&key=12900812" target="blank">Linked In</a>
+		         </li>
+		        </ul>
+                </div>
+               </div>
+		 {% endblock %}
+        </div>
+        
+    </div>
+  </div>
+            
+  <div id="footer-bottom">
+	
+    <p class="bottom-left">			
+			{% block bottom_bar %}<p> Code Tonic (c) 2009 - Manuel Astudillo. Powered by <a href=http://www.djangoproject.com>Django</a> </p>{% endblock %}
+    </p>	
+			
+    <p class="bottom-right" >
+	   <!-- <a href="index.html">Sitemap</a> |  -->
+	    <a href="/feeds/latest" class="feed">RSS Feed</a> |
+		<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+		<a href="http://validator.w3.org/check/referer">XHTML</a>
+	</p>	
+  </div>
+    
+  <div class="grid_16" id="bottombar">
+  </div> 
+   
+</body>
+</html>
+
