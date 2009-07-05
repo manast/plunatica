@@ -3,10 +3,6 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-#SITE_BASE_URL = 'www.codetonic.com'
-SITE_BASE_URL = '127.0.0.1:8000'
-
-
 ADMINS = (
    ('Manuel Astudillo', 'manuel@codetonic.com'),
 )
