@@ -21,7 +21,7 @@ def blog_index ( request ):
      
 def about ( request ):
     menu = ( main_menu, 'About')
-    return render_to_response('blog_index.html', {'maxblogs': '10', 'menu':menu, 'tag':None} )
+    return render_to_response('codetonic.html', {'blog_slug': 'Debut','menu':menu} )
 
 def blog_index_by_tag ( request, tag ):
     menu = ( main_menu, 'Blog')
