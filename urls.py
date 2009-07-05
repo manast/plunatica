@@ -17,8 +17,6 @@ urlpatterns = patterns('',
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
-
     # Static Media
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': '/Users/manuel/Django-projects/codetonic/media'})
