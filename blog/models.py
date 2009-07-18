@@ -1,7 +1,6 @@
 from django.contrib.syndication.feeds import Feed
 from django.db import models
 
-from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from rstify.utils import rstify
 
