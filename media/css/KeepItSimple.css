@@ -11,7 +11,7 @@
    HTML ELEMENTS
 ------------------------------------------------- */ 
 body {
-	font: 12px/165% 'Lucida Grande', Verdana, Helvetica, sans-serif;
+	font: 13px/165% 'Lucida Grande', Verdana, Helvetica, sans-serif;
 	color: #666666; 	
 	margin: 0; padding: 0 0 50px 0; 
 	background: #F6F5F5 url(../images/bg.gif) repeat-x; 
@@ -90,6 +90,11 @@ acronym {
   cursor: help;
   border-bottom: 1px dotted #895F30;
 }
+
+em {
+ font-style: italic;   
+}
+
 blockquote {
 	margin: 10px;
  	padding: 10px 10px 10px 32px;  
