@@ -1,0 +1,7 @@
+{% load linktag %}
+{% for section in sections %}
+<div id="link-section">
+    <h3>{{ section }}</h3>
+    {% linklist section %}
+</div>
+{% endfor %}
