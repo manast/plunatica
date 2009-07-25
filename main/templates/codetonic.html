@@ -94,15 +94,12 @@
 		      <h3>Recent Posts</h3>
 			     {% blogbar 5 %}
 		    </div>
-		    <div class="sidemenu">		
-		      <h3>Links</h3>
-		      {% linklist 'links' %}
+		    
+		    <div class="sidemenu">
+		      {% linksections %}
 		    </div>
+		    
 		    <div class="sidemenu">		
-		      <h3>Essentials</h3>
-		      {% linklist 'essentials' %}
-		    </div>  
-	        <div class="sidemenu">		
 		      <h3>Tags</h3>
 		      {% taglist 0 %}
 		    </div>
