@@ -1,0 +1,19 @@
+{% extends "codetonic.html" %}
+
+{% block blog %}
+ {% block main %}
+
+{% if project %}
+
+<h2>{{ project.name }}</h2>
+
+{% autoescape off %}
+{{ project.description_html }}
+{% endautoescape %}
+
+{% else %}
+		<p> Project not found... </p>			
+{% endif %}
+
+ {% endblock %}
+{% endblock %}
