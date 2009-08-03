@@ -2,7 +2,7 @@ from django.contrib.syndication.feeds import Feed
 from django.db import models
 
 from django.utils.safestring import mark_safe
-from rstify.utils import rstify
+from restify import *
 
 # Create your models here.
 
@@ -40,7 +40,7 @@ class BlogEntry(models.Model):
         return self.title
         
     def save(self, **kwargs):
-        self.content_html = mark_safe(rstify(self.content, 1))
+        self.content_html = mark_safe(restify(self.content, 1))
         super(BlogEntry, self).save(**kwargs)
             
     @models.permalink
