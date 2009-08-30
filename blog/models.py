@@ -28,7 +28,7 @@ class Tag(models.Model):
 
 class BlogEntry(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=64)
+    slug = models.SlugField(max_length=64, unique=True)
     content = models.TextField()
     content_html = models.TextField(blank=True)
     pub_date = models.DateTimeField('date published')
