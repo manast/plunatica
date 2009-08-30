@@ -65,9 +65,18 @@ p, dl { padding: 10px 15px; }
 /* Images */
 img {
 	background: #FAFAFA;
-   border: 1px solid #DCDCDC;
-	padding: 8px;
+//   border: 1px solid #DCDCDC;
+	padding: 1px;
 }
+
+#rating
+{
+    //margin: px 0;
+    padding-left: 15px;
+//    font-size: .95em; 
+    color: #B0B0B0;
+}
+
 img.float-right {
   	margin: 5px 0px 10px 10px;  
 }
