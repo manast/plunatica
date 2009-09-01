@@ -1,3 +1,5 @@
+{%load ratetags %}
+
 {% if blog %}
 
 <h2>{{ blog.title }}</h2>
@@ -7,6 +9,8 @@
 {% autoescape off %}
 {{ blog.content_html }}
 {% endautoescape %}
+
+Did you like this article? plase, rate it! {% make_rating blog.slug %}
 
 <!-- Comments start here -->
 {% include "comments.html" %}

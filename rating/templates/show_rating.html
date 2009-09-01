@@ -1,0 +1,16 @@
+
+<span id="show-{{rating.ratedObject}}" class="ratings">
+    {% for star in stars %}
+        <img border="0" src="{{imageurl}}/{{star.img}}" alt="{{star.img}}"/>
+    {% endfor %}
+</span>
+
+<span id="{{rating.ratedObject}}-description" class="ratingText">
+    {% ifnotequal rating.numVotes 0 %}
+        {% ifequal rating.numVotes 1 %}
+            ( 1 vote )
+        {% else %}
+            ( {{rating.numVotes}} votes)
+        {% endifequal %}
+    {% endifnotequal %}
+</span>

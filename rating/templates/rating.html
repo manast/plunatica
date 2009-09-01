@@ -5,12 +5,4 @@
     {% endfor %}
 </span>
 
-<span id="{{rating.ratedObject}}-description" class="ratingText">
-    {% ifnotequal rating.numVotes 0 %}
-        {% ifequal rating.numVotes 1 %}
-            ( 1 vote )
-        {% else %}
-            ( {{rating.numVotes}} votes)
-        {% endifequal %}
-    {% endifnotequal %}
-</span>
+

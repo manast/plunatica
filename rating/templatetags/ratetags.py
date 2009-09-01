@@ -22,7 +22,7 @@ class Star(object):
         self.img = img
 
 @register.inclusion_tag('rating.html')
-def show_rating( objectKey ):
+def make_rating( objectKey ):
     rating = Rating.objects.get_or_create( ratedObject=objectKey )[0]
     
     if rating.numVotes > 0:
@@ -43,9 +43,9 @@ def show_rating( objectKey ):
             
     return {'rating': rating, 'imageurl':settings.MEDIA_URL, 'callback':'myCallback', 'stars':stars}
     
-
-
-
+@register.inclusion_tag('show_rating.html')
+def show_rating( objectKey ):
+    return make_rating( objectKey )
 
 
 
