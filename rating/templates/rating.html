@@ -1,7 +1,7 @@
 
 <span id="{{rating.ratedObject}}" class="ratings">
     {% for star in stars %}
-        <img onmouseover="javascript: hoverStar('{{rating.ratedObject}}', {{star.pos}}, '{{imageurl}}');" onmouseout="javascript: restoreStar('{{rating.ratedObject}}');" onclick="javascript: clickStar('{{rating.ratedObject}}', {{star.pos}}, '{{imageurl}}');" border="0" src="{{imageurl}}/{{star.img}}" alt="{{star.img}}"/>
+        <img onmouseover="javascript: hoverStar('{{rating.ratedObject}}', {{star.pos}}, '{{imageurl}}');" onmouseout="javascript: restoreStar('{{rating.ratedObject}}');" onclick="javascript: clickStar('{{rating.ratedObject}}', {{star.pos}}, '{{imageurl}}');" border="0" src="{{imageurl}}{{star.img}}" alt="{{star.img}}"/>
     {% endfor %}
 </span>
 
