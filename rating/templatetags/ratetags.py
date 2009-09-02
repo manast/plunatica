@@ -33,13 +33,13 @@ def make_rating( objectKey ):
     stars = list()
 
     fraction, integer = math.modf(avgRating)
-    for pos in range(1,rating.maxRating+1):
+    for pos in range(0,rating.maxRating):
         if pos < integer:
-            stars.append( Star(pos, STARS[1.0] ) )
+            stars.append( Star(pos+1, STARS[1.0] ) )
         elif pos == integer:
-            stars.append( Star(pos, STARS[fraction] ) )
+            stars.append( Star(pos+1, STARS[fraction] ) )
         elif pos > integer:
-            stars.append( Star(pos, STARS[0.0] ) )
+            stars.append( Star(pos+1, STARS[0.0] ) )
             
     return {'rating': rating, 'imageurl':settings.MEDIA_URL, 'callback':'myCallback', 'stars':stars}
     
