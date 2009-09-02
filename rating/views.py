@@ -51,7 +51,7 @@ def record_vote(request):
         rating.save()
         event.save()
         result = "%s/5 rating ( %s votes)" % (rating.totalRating, rating.numVotes)
-    except Exception as e:
+    except Exception, e:
         transaction.rollback()
         result = "Error " + str(e)
     else:

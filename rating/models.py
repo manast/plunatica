@@ -23,7 +23,7 @@ from django.db import models
 
 
 class Rating(models.Model):
-    ratedObject = models.CharField(verbose_name='Rated Object', max_length=256, unique=True)
+    ratedObject = models.CharField(verbose_name='Rated Object', max_length=255, unique=True)
     maxRating = models.IntegerField(default=5)
     totalRating = models.FloatField(default=0)
     numVotes = models.IntegerField(default=0)
@@ -66,7 +66,7 @@ class RatingEvent(models.Model):
     Yes, this is not optimal for proxies, but good enough because if you
     are behind a proxy you should be working, and not rating stuff.
     """
-    ratedObject = models.CharField(verbose_name='Rated Object', max_length=256, unique=True)
+    ratedObject = models.CharField(verbose_name='Rated Object', max_length=255, unique=True)
     ip = models.IPAddressField()
     date = models.DateTimeField(auto_now_add=True)
     value = models.IntegerField(default=0)
