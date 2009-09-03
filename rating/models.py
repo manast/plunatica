@@ -66,7 +66,7 @@ class RatingEvent(models.Model):
     Yes, this is not optimal for proxies, but good enough because if you
     are behind a proxy you should be working, and not rating stuff.
     """
-    ratedObject = models.CharField(verbose_name='Rated Object', max_length=255, unique=True)
+    ratedObject = models.CharField(verbose_name='Rated Object', max_length=255)
     ip = models.IPAddressField()
     date = models.DateTimeField(auto_now_add=True)
     value = models.IntegerField(default=0)
