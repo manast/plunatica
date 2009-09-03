@@ -52,13 +52,14 @@ class Rating(models.Model):
         3. rating.save()
         """
         
-        if event.is_changing:
-            # the user decided to change their vote, so take away the old value first
-            self.totalRating = self.totalRating - event.old_value
-            self.numVotes = self.numVotes - 1
+        if event.value <= self.maxRating and event.value >= 0:
+            if event.is_changing:
+                # the user decided to change their vote, so take away the old value first
+                self.totalRating = self.totalRating - event.old_value
+                self.numVotes = self.numVotes - 1
         
-        self.totalRating = self.totalRating + event.value
-        self.numVotes = self.numVotes + 1
+            self.totalRating = self.totalRating + event.value
+            self.numVotes = self.numVotes + 1
             
 class RatingEvent(models.Model):
     """
@@ -76,7 +77,6 @@ class RatingEvent(models.Model):
         super(RatingEvent, self).__init__(*args, **kwargs)
 
         self.is_changing = False
-
     
     def __unicode__(self):
         """ Used to identify the object in admin forms. """
