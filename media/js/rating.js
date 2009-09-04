@@ -2,7 +2,7 @@ var starSaves = new Hash();
 
 function hoverStar(id, pos, imageurl)
 {
-	var starStrip = $(id);
+	var starStrip = $(id+"-stars");
 	
 	if (starSaves.keys().indexOf(id) == -1)
 	{
@@ -32,15 +32,9 @@ function clickStar(id, pos, imageurl)
                             }
                        );
 
-	var starStrip = $(id);
-	var imgs = starStrip.select("img")
-	for (var i = 0; i < imgs.length; i++)
-	{
-		if (i < pos)
-			imgs[i].src = imageurl + "/images/star_1.0.png";
-		else
-			imgs[i].src = imageurl + "/images/star_0.0.png";
-	}
+	$(id +"-stars").hide()	
+	$(id +"-text").update('Thanks for your vote!')
+	
 	starSaves.unset(id);
 }
 
@@ -49,7 +43,7 @@ function restoreStar(id)
 	srcs = starSaves.get(id);
 	if (srcs == undefined)
 		return;
-	var starStrip = $(id);
+	var starStrip = $(id+"-stars");
 	var imgs = starStrip.select("img");
 	for (var i = 0; i < srcs.length; i++)
 	{
